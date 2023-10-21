@@ -1,0 +1,18 @@
+1)
+
+SELECT login, COUNT("courierID") AS orders_quantity
+FROM "Orders"
+INNER JOIN Orders.id ON Couriers.id
+WHERE inDelivery = "true";
+
+2)
+
+SELECT "inDelivery", cancelled, finished,
+CASE
+	WHEN finished = "true" THEN "2"
+	WHEN cancelled = "true" THEN "-1"
+	WHEN "inDelivery" = "true" THEN "1"
+	ELSE "0"
+END
+FROM "Orders";
+		
